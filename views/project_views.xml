@@ -6,18 +6,15 @@
             <field name="model">project.management</field>
             <field name="arch" type="xml">
                 <form string="Project" class="o_form_project_project" js_class="project_form">
-                    <field name="analytic_account_id" invisible="1"/>
                     <header>
-                        <button name="667" string="Share Read-only" type="action" class="oe_highlight" 
+                        <button string="Share Read-only" class="oe_highlight" 
                                 groups="project.group_project_manager" 
                                 invisible="privacy_visibility != 'portal'" 
-                                context="{'default_access_mode': 'read', 'dialog_size': 'medium'}" 
                                 data-hotkey="r"/>
-                        <button name="667" string="Share Editable" type="action" class="oe_highlight" 
+                        <button string="Share Editable" class="oe_highlight" 
                                 groups="project.group_project_manager" 
                                 invisible="privacy_visibility != 'portal'" 
-                                context="{'default_access_mode': 'edit', 'dialog_size': 'medium'}" 
-                                data-hotkey="e"/>
+                                data-hotkey="e"/>               
                     </header>
                     <sheet string="Project">
                         <div class="oe_button_box" name="button_box" groups="base.group_user">
@@ -52,6 +49,8 @@
                                 <field name="user_id" string="Project Manager" widget="many2one_avatar_user" 
                                        readonly="not active" domain="[('share', '=', False)]" 
                                        options="{'no_quick_create': True}"/>
+                                <field name="date_start"/>
+                                <field name="date_end"/>
                             </group>
                         </group>
                         <notebook>

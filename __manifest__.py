@@ -10,7 +10,10 @@
         'security/ir.model.access.csv',
         'views/menu.xml',
         'views/project_views.xml',
-    ],
+        ],
+    'demo':[
+        'data/roject_management_demo.xml'
+        ],
     'installable': True,
     'application': True,
 }

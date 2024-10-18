@@ -22,7 +22,7 @@ class Project(models.Model):
     color = fields.Integer("Color") 
     active = fields.Boolean(string='Active', default=True)
     partner_id = fields.Many2one('res.partner', string='Customer')
-    
+    is_favorite = fields.Boolean(string='Favorite', default=False)
     # Project management specific fields
     tag_ids = fields.Many2many('project.tags', string='Tags')
     
