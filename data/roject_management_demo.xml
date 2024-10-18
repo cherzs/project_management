@@ -1,0 +1,131 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Demo Data for Project Management -->
+        <record id="project_management_demo_1" model="project.management">
+            <field name="name">Project Alpha</field>
+            <field name="description">Description for Project Alpha</field>
+            <field name="date">2024-01-01 10:00:00</field>
+            <field name="state">draft</field>
+        </record>
+
+        <record id="project_management_demo_2" model="project.management">
+            <field name="name">Project Beta</field>
+            <field name="description">Description for Project Beta</field>
+            <field name="date">2024-02-01 11:00:00</field>
+            <field name="state">ongoing</field>
+        </record>
+
+        <record id="project_management_demo_3" model="project.management">
+            <field name="name">Project Gamma</field>
+            <field name="description">Description for Project Gamma</field>
+            <field name="date">2024-03-01 12:00:00</field>
+            <field name="state">completed</field>
+        </record>
+
+        <record id="project_management_demo_4" model="project.management">
+            <field name="name">Project Delta</field>
+            <field name="description">Description for Project Delta</field>
+            <field name="date">2024-04-01 13:00:00</field>
+            <field name="state">cancelled</field>
+        </record>
+
+        <!-- Repeat for 30 projects -->
+        <record id="project_management_demo_5" model="project.management">
+            <field name="name">Project Epsilon</field>
+            <field name="description">Description for Project Epsilon</field>
+            <field name="date">2024-05-01 14:00:00</field>
+            <field name="state">draft</field>
+        </record>
+
+        <record id="project_management_demo_6" model="project.management">
+            <field name="name">Project Zeta</field>
+            <field name="description">Description for Project Zeta</field>
+            <field name="date">2024-06-01 15:00:00</field>
+            <field name="state">ongoing</field>
+        </record>
+        <record id="project_management_demo_7" model="project.management">
+            <field name="name">Project Eta</field>
+            <field name="description">Project Eta is an analytics-driven project.</field>
+            <field name="date">2024-07-01 16:00:00</field>
+            <field name="state">ongoing</field>
+        </record>
+        <record id="project_management_demo_8" model="project.management">
+            <field name="name">Project Theta</field>
+            <field name="description">Project Theta focuses on enhancing security measures.</field>
+            <field name="date">2024-08-01 17:00:00</field>
+            <field name="state">completed</field>
+        </record>
+        <record id="project_management_demo_9" model="project.management">
+            <field name="name">Project Iota</field>
+            <field name="description">Project Iota aims to automate routine tasks.</field>
+            <field name="date">2024-09-01 18:00:00</field>
+            <field name="state">draft</field>
+        </record>
+        <record id="project_management_demo_10" model="project.management">
+            <field name="name">Project Kappa</field>
+            <field name="description">Project Kappa deals with integrating CRM functionalities.</field>
+            <field name="date">2024-10-01 19:00:00</field>
+            <field name="state">ongoing</field>
+        </record>
+        <record id="project_management_demo_11" model="project.management">
+            <field name="name">Project Lambda</field>
+            <field name="description">Project Lambda is a long-term development initiative.</field>
+            <field name="date">2024-11-01 10:00:00</field>
+            <field name="state">completed</field>
+        </record>
+        <record id="project_management_demo_12" model="project.management">
+            <field name="name">Project Mu</field>
+            <field name="description">Project Mu focuses on data collection and analysis.</field>
+            <field name="date">2024-12-01 11:00:00</field>
+            <field name="state">draft</field>
+        </record>
+        <record id="project_management_demo_13" model="project.management">
+            <field name="name">Project Nu</field>
+            <field name="description">Project Nu is responsible for improving scalability.</field>
+            <field name="date">2025-01-01 12:00:00</field>
+            <field name="state">ongoing</field>
+        </record>
+        <record id="project_management_demo_14" model="project.management">
+            <field name="name">Project Xi</field>
+            <field name="description">Project Xi deals with system migration.</field>
+            <field name="date">2025-02-01 13:00:00</field>
+            <field name="state">completed</field>
+        </record>
+        <record id="project_management_demo_15" model="project.management">
+            <field name="name">Project Omicron</field>
+            <field name="description">Project Omicron is a cost-reduction project.</field>
+            <field name="date">2025-03-01 14:00:00</field>
+            <field name="state">cancelled</field>
+        </record>
+        <record id="project_management_demo_16" model="project.management">
+            <field name="name">Project Pi</field>
+            <field name="description">Project Pi is focused on customer satisfaction enhancements.</field>
+            <field name="date">2025-04-01 15:00:00</field>
+            <field name="state">ongoing</field>
+        </record>
+        <record id="project_management_demo_17" model="project.management">
+            <field name="name">Project Rho</field>
+            <field name="description">Project Rho is aimed at resource optimization.</field>
+            <field name="date">2025-05-01 16:00:00</field>
+            <field name="state">completed</field>
+        </record>
+        <record id="project_management_demo_18" model="project.management">
+            <field name="name">Project Sigma</field>
+            <field name="description">Project Sigma is focused on improving communication channels.</field>
+            <field name="date">2025-06-01 17:00:00</field>
+            <field name="state">draft</field>
+        </record>
+        <record id="project_management_demo_19" model="project.management">
+            <field name="name">Project Tau</field>
+            <field name="description">Project Tau focuses on adding new features to the system.</field>
+            <field name="date">2025-07-01 18:00:00</field>
+            <field name="state">ongoing</field>
+        </record>
+        <record id="project_management_demo_20" model="project.management">
+            <field name="name">Project Upsilon</field>
+            <field name="description">Project Upsilon is aimed at updating documentation processes.</field>
+            <field name="date">2025-08-01 19:00:00</field>
+            <field name="state">completed</field>
+        </record>
+    </data>
+</odoo>
