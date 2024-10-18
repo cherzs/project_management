@@ -17,23 +17,7 @@ class Project(models.Model):
         ('completed', 'Completed'),
         ('cancelled', 'Cancelled')],
         string='Status', default='draft')
-
-    # Additional fields for the project structure
-    subtask_ids = fields.One2many(
-        'project.management', 'parent_id', string='Sub-tasks'
-    )
-    parent_id = fields.Many2one('project.management', string='Parent Task')
-    recurrence_id = fields.Many2one('recurrence.model', string='Recurrence')
     
-    # Project settings and features
-    allow_task_dependencies = fields.Boolean(string='Allow Task Dependencies')
-    rating_last_value = fields.Float(string='Last Rating Value')
-    rating_count = fields.Integer(string='Rating Count', default=0)
-    allow_milestones = fields.Boolean(string='Allow Milestones')
-    company_id = fields.Many2one('res.company', string='Company')
-    project_id = fields.Many2one('project.project', string='Project')
-    stage_id = fields.Many2one('project.task.type', string='Stage')
-    personal_stage_type_id = fields.Many2one('project.stage.type', string='Personal Stage')
     sequence = fields.Integer("Sequence", default=10)
     color = fields.Integer("Color") 
     active = fields.Boolean(string='Active', default=True)
@@ -41,8 +25,6 @@ class Project(models.Model):
     
     # Project management specific fields
     tag_ids = fields.Many2many('project.tags', string='Tags')
-    last_update_status = fields.Char(string='Last Update Status')
-    last_update_color = fields.Char(string='Last Update Color')
     
     # Fields for the form view's header and buttons
     privacy_visibility = fields.Selection([
