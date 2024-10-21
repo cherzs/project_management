@@ -10,8 +10,19 @@
                 </p>
             </field>
         </record>
+        <record id="task_management_action" model="ir.actions.act_window">
+            <field name="name">Task</field>
+            <field name="res_model">projects.task</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p>
+                    Create and manage your projects here.
+                </p>
+            </field>
+        </record>
 
         <menuitem id="project_management_menu" name="Project Management" sequence="10"/>
-        <menuitem id="project_management_submenu" name="Projects" parent="project_management_menu" action="project_management_action" sequence="10"/>
+        <menuitem id="project_management" name="Projects" parent="project_management_menu" action="project_management_action" sequence="10"/>
+        <menuitem id="task_management" name="Task" parent="project_management_menu" action="task_management_action" sequence="10"/>
     </data> 
 </odoo>

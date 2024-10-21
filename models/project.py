@@ -1,8 +1,9 @@
-from odoo import models, fields
+from odoo import models, fields 
 
 class Project(models.Model):
     _name = 'project.management'
     _description = 'Project Management'
+    _order = 'name'
 
     # Core fields
     name = fields.Char(string='Project Name', required=True)
@@ -24,7 +25,7 @@ class Project(models.Model):
     partner_id = fields.Many2one('res.partner', string='Customer')
     is_favorite = fields.Boolean(string='Favorite', default=False)
     # Project management specific fields
-    tag_ids = fields.Many2many('project.tags', string='Tags')
+    tag_ids = fields.Many2many('projects.tags', string='Tags')
     
     # Fields for the form view's header and buttons
     privacy_visibility = fields.Selection([
@@ -36,8 +37,11 @@ class Project(models.Model):
 
     # Field for tracking collaborators count
     collaborator_count = fields.Integer(compute='_compute_collaborator_count', string='Collaborators')
+    task_ids = fields.One2many('projects.task', 'project_id', string="Tasks")
+
 
     def _compute_collaborator_count(self):
         for record in self:
-            # Logic to compute the number of collaborators for the project
             record.collaborator_count = 0  # Replace with actual logic
+
+

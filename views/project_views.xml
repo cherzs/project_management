@@ -6,16 +6,6 @@
             <field name="model">project.management</field>
             <field name="arch" type="xml">
                 <form string="Project" class="o_form_project_project" js_class="project_form">
-                    <header>
-                        <button string="Share Read-only" class="oe_highlight" 
-                                groups="project.group_project_manager" 
-                                invisible="privacy_visibility != 'portal'" 
-                                data-hotkey="r"/>
-                        <button string="Share Editable" class="oe_highlight" 
-                                groups="project.group_project_manager" 
-                                invisible="privacy_visibility != 'portal'" 
-                                data-hotkey="e"/>               
-                    </header>
                     <sheet string="Project">
                         <div class="oe_button_box" name="button_box" groups="base.group_user">
                             <button class="oe_stat_button" name="668" type="action" icon="fa-users" 
@@ -86,8 +76,6 @@
             </field>
         </record>
         
-               
-        
         <!-- Kanban View -->
         <record id="view_project_kanban" model="ir.ui.view">
             <field name="name">project.management.kanban</field>
@@ -102,7 +90,7 @@
                     <field name="color"/>
                     <templates>
                         <t t-name="kanban-box">
-                            <div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click o_has_icon oe_kanban_content oe_kanban_card">
+                            <div t-attf-class="#{kanban_color(record.color)} oe_kanban_global_click o_has_icon oe_kanban_content oe_kanban_card">
                                 <div class="o_kanban_primary_left">
                                     <div class="o_primary">
                                         <span class="o_text_overflow" t-att-title="record.name.value">
@@ -120,6 +108,17 @@
                                         <span class="fa fa-calendar" title="End Date"/><t t-esc="record.date_end.value"/>
                                     </div>
                                 </div>
+                                <!-- Bagian Task -->
+                                <t t-if="record.task_ids">
+                                    <t t-foreach="record.task_ids" t-as="task">
+                                        <div>
+                                            <strong><t t-esc="task.name"/></strong>
+                                            <span><t t-esc="task.date_deadline"/></span>
+                                            <span><t t-esc="task.state"/></span>
+                                        </div>
+                                    </t>
+                                </t>
+                                                                  
                             </div>
                         </t>
                     </templates>
