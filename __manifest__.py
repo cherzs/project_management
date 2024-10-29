@@ -12,7 +12,8 @@
         'views/project_views.xml',
         ],
     'demo':[
-        'data/roject_management_demo.xml'
+        'data/roject_management_demo.xml',
+        'data/project_management_demo.xml'
         ],
     'installable': True,
     'application': True,
