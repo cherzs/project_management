@@ -5,7 +5,25 @@
         <field name="model">project.management</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_start_project" 
+                            string="Start Project" 
+                            type="object" 
+                            class="oe_highlight"
+                            invisible="state != 'draft'"/>
+                    <button name="action_complete_project" 
+                            string="Complete" 
+                            type="object"
+                            invisible="state != 'ongoing'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" 
+                                name="action_view_tasks" icon="fa-tasks">
+                            <field string="Tasks" name="task_count" widget="statinfo"/>
+                        </button>
+                    </div>
                     <group>
                         <field name="name"/>
                         <field name="user_id"/>
@@ -21,6 +39,11 @@
                         </page>
                     </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
@@ -45,21 +68,15 @@
         <field name="model">project.management</field>
         <field name="arch" type="xml">
             <kanban class="o_kanban_dashboard o_project_kanban o_emphasize_colors" 
-                   default_group_by="state"
-                   records_draggable="true"
                    on_create="quick_create"
-                   sample="1"
-                   default_order="name, id">
+                   sample="1">
+                <!-- Hanya field yang ada di model -->
                 <field name="name"/>
                 <field name="user_id"/>
-                <field name="state"/>
-                <field name="description"/>
-                <field name="date_start"/>
-                <field name="date_end"/>
+                <field name="partner_id"/>
                 <field name="color"/>
-                <field name="task_id"/>
-                
-                <progressbar field="state" colors='{"draft": "success", "ongoing": "warning", "completed": "info", "cancelled": "danger"}'/>
+                <field name="task_count"/>
+                <field name="state"/>
                 
                 <templates>
                     <t t-name="kanban-menu" groups="base.group_user">
@@ -73,21 +90,13 @@
                                         <a name="action_view_tasks" type="object">Tasks</a>
                                     </div>
                                 </div>
-                                <div class="col-6 o_kanban_card_manage_section o_kanban_manage_reporting">
-                                    <h5 role="menuitem" class="o_kanban_card_manage_title">
-                                        <span>Reporting</span>
-                                    </h5>
-                                    <div role="menuitem">
-                                        <a name="action_view_task_analysis" type="object">Task Analysis</a>
+                                <div class="o_kanban_card_manage_settings row">
+                                    <div role="menuitem" aria-haspopup="true" class="col-6">
+                                        <ul class="oe_kanban_colorpicker" data-field="color" role="popup"/>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="o_kanban_card_manage_settings row">
-                                <div role="menuitem" aria-haspopup="true" class="col-6">
-                                    <ul class="oe_kanban_colorpicker" data-field="color" role="popup"/>
-                                </div>
-                                <div role="menuitem" class="col-6">
-                                    <a class="dropdown-item" role="menuitem" type="edit">Settings</a>
+                                    <div role="menuitem" class="col-6">
+                                        <a class="dropdown-item" role="menuitem" type="edit">Settings</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -95,6 +104,13 @@
 
                     <t t-name="kanban-box">
                         <div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click o_has_icon oe_kanban_content oe_kanban_card">
+                            <div t-attf-class="oe_kanban_status position-absolute h-100 start-0 top-0 #{
+                                record.state.raw_value == 'draft' and 'bg-success' or
+                                record.state.raw_value == 'ongoing' and 'bg-warning' or
+                                record.state.raw_value == 'completed' and 'bg-info' or
+                                record.state.raw_value == 'cancelled' and 'bg-danger'}" 
+                                 style="width: 4px;"/>
+                            
                             <div class="o_project_kanban_main d-flex align-items-baseline gap-1">
                                 <div class="o_kanban_card_content mw-100">
                                     <div class="o_kanban_primary_left">
@@ -104,12 +120,9 @@
                                             </span>
                                             <div t-if="record.date_start.raw_value" class="text-muted o_row">
                                                 <span class="fa fa-clock-o me-2" title="Dates"/>
-                                                <field name="date_start"/>
+                                                <field name="date_start" widget="date" options="{'format': 'DD/MM/YYYY'}"/>
                                                 <i t-if="record.date_end.raw_value" class="fa fa-long-arrow-right mx-2 oe_read_only" aria-label="Arrow icon" title="Arrow"/>
-                                                <field name="date_end"/>
-                                            </div>
-                                            <div class="text-muted o_kanban_text_content">
-                                                <field name="description" widget="text_truncate" options="{'length': 50}"/>
+                                                <field name="date_end" widget="date" options="{'format': 'DD/MM/YYYY'}"/>
                                             </div>
                                         </div>
                                     </div>
@@ -121,7 +134,7 @@
                                         <a class="o_project_kanban_box" name="action_view_tasks" type="object">
                                             <div>
                                                 <span class="o_value">
-                                                    <t t-esc="record.task_id.raw_value.length || 0"/>
+                                                    <field name="task_count"/>
                                                 </span>
                                                 <span class="o_label ms-1">Tasks</span>
                                             </div>
@@ -144,5 +157,4 @@
             </kanban>
         </field>
     </record>
-    
 </odoo>

@@ -8,18 +8,18 @@
     'description': ''' A simple project management module''',
     'data': [
         'security/ir.model.access.csv',
-        'views/menu.xml',
+        'security/project_security.xml',
+        'data/project_task_stage_data.xml',
         'views/project_views.xml',
         'views/task_views.xml',
-        ],
-    'demo':[
-        'data/roject_management_demo.xml',
+        'views/menu.xml',
+    ],
+    'demo': [
         'data/project_management_demo.xml',
-        'data/project_task_stage_data.xml',
-        ],
+        'data/task_management_demo.xml',
+    ],
     'assets': {
         'web.assets_backend': [
-          
         ],
     },
     'installable': True,

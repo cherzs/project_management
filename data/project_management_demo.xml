@@ -1,92 +1,231 @@
 <odoo>
     <data noupdate="1">
-        <!-- Demo Projects -->
+        <!-- Demo Data for Project Management -->
         <record id="project_management_demo_1" model="project.management">
-            <field name="name">Website Redesign</field>
-            <field name="description">Overhaul the company website for better user experience and modern design.</field>
-            <field name="date_start" eval="(datetime.now() + relativedelta(days=-30)).strftime('%Y-%m-%d')"/>
-            <field name="date_end" eval="(datetime.now() + relativedelta(days=60)).strftime('%Y-%m-%d')"/>
-            <field name="state">ongoing</field>
+            <field name="name">Project Alpha</field>
+            <field name="description">Description for Project Alpha</field>
+            <field name="date_start">2024-01-01</field>
+            <field name="date_end">2024-03-31</field>
+            <field name="state">draft</field>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="privacy_visibility">portal</field>
         </record>
 
         <record id="project_management_demo_2" model="project.management">
-            <field name="name">Mobile App Development</field>
-            <field name="description">Create a new mobile app for customer engagement and support.</field>
-            <field name="date_start" eval="(datetime.now() + relativedelta(days=-15)).strftime('%Y-%m-%d')"/>
-            <field name="date_end" eval="(datetime.now() + relativedelta(days=75)).strftime('%Y-%m-%d')"/>
+            <field name="name">Project Beta</field>
+            <field name="description">Description for Project Beta</field>
+            <field name="date_start">2024-02-01</field>
+            <field name="date_end">2024-04-30</field>
             <field name="state">ongoing</field>
             <field name="user_id" ref="base.user_demo"/>
-            <field name="privacy_visibility">followers</field>
         </record>
 
         <record id="project_management_demo_3" model="project.management">
-            <field name="name">ERP Implementation</field>
-            <field name="description">Implement and customize Odoo ERP system for the company.</field>
-            <field name="date_start" eval="(datetime.now() + relativedelta(days=15)).strftime('%Y-%m-%d')"/>
-            <field name="date_end" eval="(datetime.now() + relativedelta(days=195)).strftime('%Y-%m-%d')"/>
+            <field name="name">Project Gamma</field>
+            <field name="description">Description for Project Gamma</field>
+            <field name="date_start">2024-03-01</field>
+            <field name="date_end">2024-05-31</field>
+            <field name="state">completed</field>
+            <field name="user_id" ref="base.user_admin"/>
+        </record>
+
+        <record id="project_management_demo_4" model="project.management">
+            <field name="name">Project Delta</field>
+            <field name="description">Description for Project Delta</field>
+            <field name="date_start">2024-04-01</field>
+            <field name="date_end">2024-06-30</field>
+            <field name="state">cancelled</field>
+            <field name="user_id" ref="base.user_demo"/>
+        </record>
+
+        <record id="project_management_demo_5" model="project.management">
+            <field name="name">Project Epsilon</field>
+            <field name="description">Description for Project Epsilon</field>
+            <field name="date_start">2024-05-01</field>
+            <field name="date_end">2024-07-31</field>
             <field name="state">draft</field>
             <field name="user_id" ref="base.user_admin"/>
-            <field name="privacy_visibility">private</field>
         </record>
 
-        <!-- Demo Tasks -->
-        <record id="task_demo_1" model="projects.task">
-            <field name="name">Design Homepage Mockup</field>
-            <field name="project_id" ref="project_management_demo_1"/>
-            <field name="assigned_user_id" ref="base.user_demo"/>
-            <field name="description">Create a mockup for the new homepage design.</field>
-            <field name="date_deadline" eval="(datetime.now() + relativedelta(days=7)).strftime('%Y-%m-%d')"/>
-            <field name="state">in_progress</field>
-            <field name="priority">2</field>
+        <record id="project_management_demo_6" model="project.management">
+            <field name="name">Project Zeta</field>
+            <field name="description">Description for Project Zeta</field>
+            <field name="date_start">2024-06-01</field>
+            <field name="date_end">2024-08-31</field>
+            <field name="state">ongoing</field>
+            <field name="user_id" ref="base.user_demo"/>
         </record>
 
-        <record id="task_demo_2" model="projects.task">
-            <field name="name">Develop User Authentication</field>
-            <field name="project_id" ref="project_management_demo_2"/>
-            <field name="assigned_user_id" ref="base.user_admin"/>
-            <field name="description">Implement user authentication system for the mobile app.</field>
-            <field name="date_deadline" eval="(datetime.now() + relativedelta(days=14)).strftime('%Y-%m-%d')"/>
-            <field name="state">new</field>
-            <field name="priority">1</field>
+        <record id="project_management_demo_7" model="project.management">
+            <field name="name">Project Eta</field>
+            <field name="description">Project Eta is an analytics-driven project.</field>
+            <field name="date_start">2024-07-01</field>
+            <field name="date_end">2024-09-30</field>
+            <field name="state">ongoing</field>
+            <field name="user_id" ref="base.user_admin"/>
         </record>
 
-        <record id="task_demo_3" model="projects.task">
-            <field name="name">Configure Inventory Module</field>
-            <field name="project_id" ref="project_management_demo_3"/>
-            <field name="assigned_user_id" ref="base.user_demo"/>
-            <field name="description">Set up and customize the inventory module in Odoo.</field>
-            <field name="date_deadline" eval="(datetime.now() + relativedelta(days=30)).strftime('%Y-%m-%d')"/>
-            <field name="state">new</field>
-            <field name="priority">1</field>
+        <record id="project_management_demo_8" model="project.management">
+            <field name="name">Project Theta</field>
+            <field name="description">Project Theta focuses on enhancing security measures.</field>
+            <field name="date_start">2024-08-01</field>
+            <field name="date_end">2024-10-31</field>
+            <field name="state">completed</field>
+            <field name="user_id" ref="base.user_demo"/>
         </record>
 
-        <!-- Demo Tags -->
-        <record id="project_tag_urgent" model="project.tags">
-            <field name="name">Urgent</field>
-            <field name="color">1</field>
+        <record id="project_management_demo_9" model="project.management">
+            <field name="name">Project Iota</field>
+            <field name="description">Project Iota aims to automate routine tasks.</field>
+            <field name="date_start">2024-09-01</field>
+            <field name="date_end">2024-11-30</field>
+            <field name="state">draft</field>
+            <field name="user_id" ref="base.user_admin"/>
         </record>
 
-        <record id="project_tag_bug" model="project.tags">
-            <field name="name">Bug</field>
-            <field name="color">2</field>
+        <record id="project_management_demo_10" model="project.management">
+            <field name="name">Project Kappa</field>
+            <field name="description">Project Kappa deals with integrating CRM functionalities.</field>
+            <field name="date_start">2024-10-01</field>
+            <field name="date_end">2024-12-31</field>
+            <field name="state">ongoing</field>
+            <field name="user_id" ref="base.user_demo"/>
         </record>
 
-        <record id="project_tag_feature" model="project.tags">
-            <field name="name">New Feature</field>
-            <field name="color">3</field>
+        <!-- Adding projects 11-25 -->
+        <record id="project_management_demo_11" model="project.management">
+            <field name="name">Project Lambda</field>
+            <field name="description">Project Lambda focuses on implementing AI-driven customer support solutions.</field>
+            <field name="date_start">2024-01-15</field>
+            <field name="date_end">2024-04-15</field>
+            <field name="state">ongoing</field>
+            <field name="user_id" ref="base.user_admin"/>
         </record>
 
-        <!-- Assign tags to tasks -->
-        <function model="projects.task" name="write">
-            <value eval="[ref('task_demo_1')]"/>
-            <value eval="{'tag_ids': [(4, ref('project_tag_urgent'))]}"/>
-        </function>
+        <record id="project_management_demo_12" model="project.management">
+            <field name="name">Project Mu</field>
+            <field name="description">Project Mu aims to develop a mobile payment gateway system.</field>
+            <field name="date_start">2024-02-01</field>
+            <field name="date_end">2024-05-31</field>
+            <field name="state">draft</field>
+            <field name="user_id" ref="base.user_demo"/>
+        </record>
 
-        <function model="projects.task" name="write">
-            <value eval="[ref('task_demo_2')]"/>
-            <value eval="{'tag_ids': [(4, ref('project_tag_feature'))]}"/>
-        </function>
+        <record id="project_management_demo_13" model="project.management">
+            <field name="name">Project Nu</field>
+            <field name="description">Project Nu involves creating a comprehensive employee training platform.</field>
+            <field name="date_start">2024-03-01</field>
+            <field name="date_end">2024-06-30</field>
+            <field name="state">ongoing</field>
+            <field name="user_id" ref="base.user_admin"/>
+        </record>
+
+        <record id="project_management_demo_14" model="project.management">
+            <field name="name">Project Xi</field>
+            <field name="description">Project Xi focuses on implementing blockchain technology for supply chain tracking.</field>
+            <field name="date_start">2024-03-15</field>
+            <field name="date_end">2024-07-15</field>
+            <field name="state">draft</field>
+            <field name="user_id" ref="base.user_demo"/>
+        </record>
+
+        <record id="project_management_demo_15" model="project.management">
+            <field name="name">Project Omicron</field>
+            <field name="description">Project Omicron aims to develop an advanced data analytics dashboard.</field>
+            <field name="date_start">2024-04-01</field>
+            <field name="date_end">2024-08-31</field>
+            <field name="state">ongoing</field>
+            <field name="user_id" ref="base.user_admin"/>
+        </record>
+
+        <record id="project_management_demo_16" model="project.management">
+            <field name="name">Project Pi</field>
+            <field name="description">Project Pi involves implementing IoT solutions for smart office management.</field>
+            <field name="date_start">2024-04-15</field>
+            <field name="date_end">2024-09-15</field>
+            <field name="state">completed</field>
+            <field name="user_id" ref="base.user_demo"/>
+        </record>
+
+        <record id="project_management_demo_17" model="project.management">
+            <field name="name">Project Rho</field>
+            <field name="description">Project Rho focuses on developing a cloud-based document management system.</field>
+            <field name="date_start">2024-05-01</field>
+            <field name="date_end">2024-09-30</field>
+            <field name="state">ongoing</field>
+            <field name="user_id" ref="base.user_admin"/>
+        </record>
+
+        <record id="project_management_demo_18" model="project.management">
+            <field name="name">Project Sigma</field>
+            <field name="description">Project Sigma aims to implement an automated testing framework.</field>
+            <field name="date_start">2024-05-15</field>
+            <field name="date_end">2024-10-15</field>
+            <field name="state">draft</field>
+            <field name="user_id" ref="base.user_demo"/>
+        </record>
+
+        <record id="project_management_demo_19" model="project.management">
+            <field name="name">Project Tau</field>
+            <field name="description">Project Tau involves creating a real-time monitoring system for server infrastructure.</field>
+            <field name="date_start">2024-06-01</field>
+            <field name="date_end">2024-10-31</field>
+            <field name="state">ongoing</field>
+            <field name="user_id" ref="base.user_admin"/>
+        </record>
+
+        <record id="project_management_demo_20" model="project.management">
+            <field name="name">Project Upsilon</field>
+            <field name="description">Project Upsilon focuses on developing a machine learning-based recommendation engine.</field>
+            <field name="date_start">2024-06-15</field>
+            <field name="date_end">2024-11-15</field>
+            <field name="state">draft</field>
+            <field name="user_id" ref="base.user_demo"/>
+        </record>
+
+        <record id="project_management_demo_21" model="project.management">
+            <field name="name">Project Phi</field>
+            <field name="description">Project Phi aims to implement a comprehensive HR management system.</field>
+            <field name="date_start">2024-07-01</field>
+            <field name="date_end">2024-11-30</field>
+            <field name="state">ongoing</field>
+            <field name="user_id" ref="base.user_admin"/>
+        </record>
+
+        <record id="project_management_demo_22" model="project.management">
+            <field name="name">Project Chi</field>
+            <field name="description">Project Chi involves developing an e-learning platform with interactive features.</field>
+            <field name="date_start">2024-07-15</field>
+            <field name="date_end">2024-12-15</field>
+            <field name="state">draft</field>
+            <field name="user_id" ref="base.user_demo"/>
+        </record>
+
+        <record id="project_management_demo_23" model="project.management">
+            <field name="name">Project Psi</field>
+            <field name="description">Project Psi focuses on implementing a cybersecurity enhancement program.</field>
+            <field name="date_start">2024-08-01</field>
+            <field name="date_end">2024-12-31</field>
+            <field name="state">ongoing</field>
+            <field name="user_id" ref="base.user_admin"/>
+        </record>
+
+        <record id="project_management_demo_24" model="project.management">
+            <field name="name">Project Omega</field>
+            <field name="description">Project Omega aims to develop a comprehensive business intelligence solution.</field>
+            <field name="date_start">2024-08-15</field>
+            <field name="date_end">2025-01-15</field>
+            <field name="state">draft</field>
+            <field name="user_id" ref="base.user_demo"/>
+        </record>
+
+        <record id="project_management_demo_25" model="project.management">
+            <field name="name">Project Alpha Prime</field>
+            <field name="description">Project Alpha Prime involves implementing an enterprise-wide digital transformation initiative.</field>
+            <field name="date_start">2024-09-01</field>
+            <field name="date_end">2025-02-28</field>
+            <field name="state">ongoing</field>
+            <field name="user_id" ref="base.user_admin"/>
+        </record>
+
     </data>
 </odoo>
