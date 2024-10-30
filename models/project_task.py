@@ -33,6 +33,16 @@ class Task(models.Model):
         ('done', 'Done')
     ], string='Time Group', compute='_compute_time_group', store=True)
 
+    personal_stage_id = fields.Many2one(
+        'project.task.stage.personal',
+        string='Personal Stage',
+        compute='_compute_personal_stage_id',
+        store=True,
+        readonly=False,
+        domain="[('user_id', '=', uid)]"
+    )
+
+
     @api.depends('date_deadline', 'state')
     def _compute_time_group(self):
         today = fields.Date.today()
@@ -51,3 +61,13 @@ class Task(models.Model):
                 task.time_group = 'next_week'
             else:
                 task.time_group = 'later'
+
+    @api.depends_context('uid')
+    def _compute_personal_stage_id(self):
+        for task in self:
+            if not task.personal_stage_id or task.personal_stage_id.user_id.id != self.env.uid:
+                # Get the first personal stage for the current user
+                first_stage = self.env['project.task.stage.personal'].search([
+                    ('user_id', '=', self.env.uid)
+                ], limit=1, order='sequence')
+                task.personal_stage_id = first_stage.id if first_stage else False

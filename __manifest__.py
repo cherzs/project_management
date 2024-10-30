@@ -14,7 +14,8 @@
         ],
     'demo':[
         'data/roject_management_demo.xml',
-        'data/project_management_demo.xml'
+        'data/project_management_demo.xml',
+        'data/project_task_stage_data.xml',
         ],
     'assets': {
         'web.assets_backend': [

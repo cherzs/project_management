@@ -55,6 +55,7 @@
                 <group expand="0" string="Group By">
                     <filter string="Project" name="group_by_project" context="{'group_by': 'project_id'}"/>
                     <filter string="Status" name="group_by_state" context="{'group_by': 'state'}"/>
+                    <filter string="Personal Stage" name="group_by_personal_stage" context="{'group_by': 'personal_stage_id'}"/>
                     <filter string="Assigned To" name="group_by_assigned" context="{'group_by': 'assigned_user_id'}"/>
                 </group>
             </search>
@@ -84,6 +85,7 @@
                 <field name="state"/>
                 <field name="priority"/>
                 <field name="tag_ids"/>
+                <field name="personal_stage_id"/>
                 <field name="display_name"/>
                 <progressbar field="state" colors='{"draft": "muted", "in_progress": "warning", "done": "success"}'/>
                 <templates>

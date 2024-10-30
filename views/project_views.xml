@@ -44,50 +44,98 @@
         <field name="name">project.management.kanban</field>
         <field name="model">project.management</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="state" 
-                    class="o_kanban_small_column" 
-                    records_draggable="true"
-                    on_create="quick_create"
-                    group_create="true"
-                    group_delete="true"
-                    group_edit="true"
-                    sample="1">
+            <kanban class="o_kanban_dashboard o_project_kanban o_emphasize_colors" 
+                   default_group_by="state"
+                   records_draggable="true"
+                   on_create="quick_create"
+                   sample="1"
+                   default_order="name, id">
                 <field name="name"/>
                 <field name="user_id"/>
                 <field name="state"/>
                 <field name="description"/>
                 <field name="date_start"/>
                 <field name="date_end"/>
-                <progressbar field="state" colors='{"draft": "muted", "ongoing": "warning", "completed": "success"}'/>
-                <field name="display_name"/>
+                <field name="color"/>
+                <field name="task_id"/>
+                
+                <progressbar field="state" colors='{"draft": "success", "ongoing": "warning", "completed": "info", "cancelled": "danger"}'/>
+                
                 <templates>
+                    <t t-name="kanban-menu" groups="base.group_user">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6 o_kanban_card_manage_section o_kanban_manage_view">
+                                    <h5 role="menuitem" class="o_kanban_card_manage_title">
+                                        <span>View</span>
+                                    </h5>
+                                    <div role="menuitem">
+                                        <a name="action_view_tasks" type="object">Tasks</a>
+                                    </div>
+                                </div>
+                                <div class="col-6 o_kanban_card_manage_section o_kanban_manage_reporting">
+                                    <h5 role="menuitem" class="o_kanban_card_manage_title">
+                                        <span>Reporting</span>
+                                    </h5>
+                                    <div role="menuitem">
+                                        <a name="action_view_task_analysis" type="object">Task Analysis</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_kanban_card_manage_settings row">
+                                <div role="menuitem" aria-haspopup="true" class="col-6">
+                                    <ul class="oe_kanban_colorpicker" data-field="color" role="popup"/>
+                                </div>
+                                <div role="menuitem" class="col-6">
+                                    <a class="dropdown-item" role="menuitem" type="edit">Settings</a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
                     <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <div class="oe_kanban_content">
-                                <div class="o_kanban_record_title mb-2">
-                                    <strong><field name="name"/></strong>
-                                </div>
-                                <div class="o_kanban_record_subtitle mb-2">
-                                    <field name="user_id"/>
-                                </div>
-                                <div class="o_kanban_record_body mb-2">
-                                    <div class="o_kanban_text_content">
-                                        <field name="description" widget="text_truncate" options="{'length': 50}"/>
+                        <div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click o_has_icon oe_kanban_content oe_kanban_card">
+                            <div class="o_project_kanban_main d-flex align-items-baseline gap-1">
+                                <div class="o_kanban_card_content mw-100">
+                                    <div class="o_kanban_primary_left">
+                                        <div class="o_primary me-5">
+                                            <span class="o_text_overflow" t-att-title="record.name.value">
+                                                <field name="name"/>
+                                            </span>
+                                            <div t-if="record.date_start.raw_value" class="text-muted o_row">
+                                                <span class="fa fa-clock-o me-2" title="Dates"/>
+                                                <field name="date_start"/>
+                                                <i t-if="record.date_end.raw_value" class="fa fa-long-arrow-right mx-2 oe_read_only" aria-label="Arrow icon" title="Arrow"/>
+                                                <field name="date_end"/>
+                                            </div>
+                                            <div class="text-muted o_kanban_text_content">
+                                                <field name="description" widget="text_truncate" options="{'length': 50}"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="o_kanban_record_bottom">
-                                    <div class="oe_kanban_bottom_left">
-                                        <field name="date_start" widget="date"/>
-                                        <field name="date_end" widget="remaining_days"/>
+                            </div>
+                            <div class="o_kanban_record_bottom mt-3">
+                                <div class="oe_kanban_bottom_left">
+                                    <div class="o_project_kanban_boxes d-flex align-items-baseline">
+                                        <a class="o_project_kanban_box" name="action_view_tasks" type="object">
+                                            <div>
+                                                <span class="o_value">
+                                                    <t t-esc="record.task_id.raw_value.length || 0"/>
+                                                </span>
+                                                <span class="o_label ms-1">Tasks</span>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="oe_kanban_bottom_right">
-                                        <field name="state" widget="label_selection" options='{"classes": {
-                                            "draft": "secondary",
-                                            "ongoing": "warning",
-                                            "completed": "success",
-                                            "cancelled": "danger"
-                                        }}'/>
-                                    </div>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <field name="user_id" widget="many2one_avatar_user"/>
+                                    <field name="state" widget="label_selection" options='{"classes": {
+                                        "draft": "success",
+                                        "ongoing": "warning",
+                                        "completed": "info",
+                                        "cancelled": "danger"
+                                    }}'/>
                                 </div>
                             </div>
                         </div>

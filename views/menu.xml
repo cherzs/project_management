@@ -10,14 +10,19 @@
                 </p>
             </field>
         </record>
-        
+
         <record id="task_management_action" model="ir.actions.act_window">
-            <field name="name">Task</field>
+            <field name="name">Tasks</field>
             <field name="res_model">projects.task</field>
             <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="view_task_kanban"/>
+            <field name="context">{
+                'search_default_group_by_state': 1,
+                'search_default_group_by_personal_stage': 1
+            }</field>
             <field name="help" type="html">
-                <p>
-                    Create and manage your projects here.
+                <p class="o_view_nocontent_smiling_face">
+                    No tasks found. Let's create one!
                 </p>
             </field>
         </record>
