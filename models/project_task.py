@@ -11,11 +11,11 @@ class Task(models.Model):
     description = fields.Text(string='Description', tracking=True)
     date_deadline = fields.Date(string='Deadline', tracking=True)
     state = fields.Selection([
-        ('new', 'New'),
+        ('draft', 'Draft'),
         ('in_progress', 'In Progress'),
         ('done', 'Done'),
         ('cancelled', 'Cancelled')
-    ], string='Status', default='new', tracking=True)
+    ], string='Status', default='draft', required=True, tracking=True)
     priority = fields.Selection([
         ('0', 'Low'),
         ('1', 'Normal'),

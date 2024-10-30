@@ -16,7 +16,7 @@ class Project(models.Model):
         ('ongoing', 'Ongoing'),
         ('completed', 'Completed'),
         ('cancelled', 'Cancelled')
-    ], string='Status', default='draft', tracking=True, index=True)
+    ], string='Status', default='draft', required=True, tracking=True)
     
     sequence = fields.Integer("Sequence", default=10)
     color = fields.Integer("Color")

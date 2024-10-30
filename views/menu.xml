@@ -10,6 +10,7 @@
                 </p>
             </field>
         </record>
+        
         <record id="task_management_action" model="ir.actions.act_window">
             <field name="name">Task</field>
             <field name="res_model">projects.task</field>

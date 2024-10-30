@@ -10,11 +10,17 @@
         'security/ir.model.access.csv',
         'views/menu.xml',
         'views/project_views.xml',
+        'views/task_views.xml',
         ],
     'demo':[
         'data/roject_management_demo.xml',
         'data/project_management_demo.xml'
         ],
+    'assets': {
+        'web.assets_backend': [
+          
+        ],
+    },
     'installable': True,
     'application': True,
 }
